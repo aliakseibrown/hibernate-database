@@ -1,6 +1,4 @@
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class  Paintings {
@@ -10,6 +8,8 @@ public class  Paintings {
     private String name;
     private String painting;
     private int year;
+    @ManyToOne
+    private Artists artist;
 
     public int getId() {
         return id;
