@@ -10,6 +10,8 @@ public class Artists {
     private String name;
     private int count;
 
+    public Artists(){};
+
     @OneToMany(mappedBy = "artist")
     private List<Paintings> paintings = new ArrayList<>();
 
@@ -20,8 +22,6 @@ public class Artists {
     public void setPaintings(List<Paintings> paintings) {
         this.paintings = paintings;
     }
-
-
 
     public String getName() {
         return name;

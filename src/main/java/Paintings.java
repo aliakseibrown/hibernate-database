@@ -1,6 +1,11 @@
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+
 public class  Paintings {
     @Id
     private int id;
@@ -17,7 +22,7 @@ public class  Paintings {
 
     public void setId(int id) {
         this.id = id;
-    }
+    }t
 
     public String getRoom() {
         return room;
@@ -58,6 +63,8 @@ public class  Paintings {
         this.painting = painting;
         this.year = year;
     }
+
+    public Paintings(){}
 
     @Override
     public String toString() {
