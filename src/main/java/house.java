@@ -1,3 +1,4 @@
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -44,19 +45,26 @@ public class house {
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
 
-
 //        session.save(starry);
 //        session.save(bloss);
 //        session.save(birth);
 //        session.save(van); //creating/updating table
-        a = (Paintings) session.get(Paintings.class,1);
+
+        Query q1 = session.createQuery("from Paintings where id = 1");
+
+        q1.setCacheable(true);
+        a = (Paintings)q1.uniqueResult();
         System.out.println(a);
         session.getTransaction().commit();
+
         session.close();
 
         Session sessionB = sf.openSession();
         sessionB.beginTransaction();
-        b = (Paintings) sessionB.get(Paintings.class,3);
+        Query q2 = sessionB.createQuery("from Paintings where id = 1");
+
+        q2.setCacheable(true);
+        b = (Paintings)q2.uniqueResult();
         System.out.println(b);
         sessionB.getTransaction().commit();
         sessionB.close() ;

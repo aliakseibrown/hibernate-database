@@ -13,7 +13,7 @@ public class  Paintings {
     private String name;
     private String painting;
     private int year;
-    @ManyToOne
+    @ManyToOne //(fetch= FetchType.EAGER)
     private Artists artist;
 
     public int getId() {
@@ -22,7 +22,7 @@ public class  Paintings {
 
     public void setId(int id) {
         this.id = id;
-    }t
+    }
 
     public String getRoom() {
         return room;
